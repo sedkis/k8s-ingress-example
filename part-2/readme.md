@@ -5,6 +5,10 @@ Let's add ELK stack and have Tyk push ingress API analytics to ELK.
 1. Step 1, Install ElasticSearch, Kibana, and Tyk Pump 
 ```
 $ kubectl apply -f part-2/.
+```
+
+output:
+```
 configmap/elastic-config created
 deployment.apps/elasticsearch created
 service/elasticsearch-master created
@@ -16,6 +20,9 @@ deployment.apps/tyk-pump created
 2. Make a couple API calls through the Gateway
 ```
 $ curl $(kubectl get svc tyk-svc --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'):8080/another-api/get
+```
+output:
+```
 {
   "args": {},
   "headers": {
@@ -33,6 +40,9 @@ $ curl $(kubectl get svc tyk-svc --output jsonpath='{.status.loadBalancer.ingres
 3. Port forward to access Kibana, create the index, and view the logs, scraped by Tyk Pump and pushed to ELK.
 ```
 $ kubectl port-forward deployment/kibana 5601
+```
+output:
+```
 Forwarding from 127.0.0.1:5601 -> 5601
 Forwarding from [::1]:5601 -> 5601
 ```
