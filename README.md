@@ -1,5 +1,8 @@
 # Tyk OSS Deployment
 
+Deploying Tyk as an ingress, with a bunch  of APIs it is reverse proxying to.
+`part-2` folder has an ELK and Tyk Pump deployment for analytisc.
+
 1. Create a new namespace
 ```
 $ kubectl create ns apps
